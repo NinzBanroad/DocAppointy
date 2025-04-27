@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* will underline the active nav */
+.active hr {
+    @apply block
+}
+
+.active li {
+    color: #5f6fff
+}
+
+::-webkit-scrollbar{
+    @apply hidden
+}
+
+#header {
+    border-radius: 18% 82% 76% 24% / 58% 32% 68% 42% ;
+}
+     
