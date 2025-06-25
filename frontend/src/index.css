@@ -22,4 +22,10 @@
 #header {
     border-radius: 18% 82% 76% 24% / 58% 32% 68% 42% ;
 }
+
+@media (max-width: 740px) {
+  .active p{
+    @apply text-white bg-[#5f6fff]
+  }
+}
      

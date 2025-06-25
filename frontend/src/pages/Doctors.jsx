@@ -5,6 +5,7 @@ import { AppContext } from '../context/AppContext';
 const Doctors = () => {
   const { specialty } = useParams();
   const [filterDoc, setFilterDoc] = useState([]);
+  const [showFilter, setShowFilter] = useState(false);
   const { doctors } = useContext(AppContext);
   const navigate = useNavigate();
 
@@ -24,7 +25,19 @@ const Doctors = () => {
     <div>
       <p className='text-gray-600'>Browse through the doctors specialist.</p>
       <div className='flex flex-col sm:flex-row items-start gap-5 mt-5'>
-        <div className='flex flex-col gap-4 text-sm text-gray-600'>
+        <button
+          className={`py-1 px-3 border rounded text-sm transition-all sm:hidden ${
+            showFilter ? 'bg-[#5f6fff] text-white' : ''
+          }`}
+          onClick={() => setShowFilter((prev) => !prev)}
+        >
+          Filters
+        </button>
+        <div
+          className={`flex-col gap-4 text-sm text-gray-600 ${
+            showFilter ? 'flex' : 'hidden sm:flex'
+          }`}
+        >
           <p
             onClick={() =>
               specialty === 'General physician'
@@ -102,7 +115,7 @@ const Doctors = () => {
             Gastroenterologist
           </p>
         </div>
-        <div className='w-full grid grid-cols-5 gap-4 gap-y-6 px-3'>
+        <div className='w-full grid sm:grid-cols-5 gap-4 gap-y-6 px-3'>
           {filterDoc.map((item, i) => (
             <div
               onClick={() => navigate(`/appointment/${item._id}`)}
